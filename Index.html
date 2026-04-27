@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 💖</title>
+<style>
+body { margin:0; font-family:'Segoe UI', sans-serif; background:linear-gradient(to bottom,#ffd6e0,#fff); text-align:center; overflow-x:hidden;}
+#startScreen {position:fixed;width:100%;height:100vh;background:#ffb6c1;display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:10;}
+#startScreen button {padding:15px 25px;font-size:18px;border:none;border-radius:20px;background:white;color:#ff4d88;cursor:pointer;}
+#mainContent {display:none;}
+h1 {color:#ff4d88;margin-top:20px;}
+.gallery img {width:140px;height:180px;object-fit:cover;margin:8px;border-radius:15px;}
+.slideshow img {width:90%;max-width:350px;border-radius:20px;display:none;}
+.heart {position:fixed;color:pink;font-size:20px;animation:float 6s linear infinite;}
+@keyframes float {0%{transform:translateY(100vh);opacity:0;}100%{transform:translateY(-10vh);opacity:1;}}
+</style>
+</head>
+<body>
+
+<div id="startScreen">
+<h1>🎁 A Small Surprise For You</h1>
+<button onclick="openSite()">Tap to Open 💖</button>
+</div>
+
+<div id="mainContent">
+<h1>Happy Birthday My Princess 💖</h1>
+<p>
+Happiest Birthday to the most beautiful soul 💕 <br><br>
+May God bless you with all the happiness you deserve 🥺✨ <br><br>
+Never forget you are the strongest girl 🧿💖 <br><br>
+You are truly special… my princess 👑💖
+</p>
+
+<div class="slideshow">
+<img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg"><img src="photo4.jpg">
+</div>
+
+<div class="gallery">
+<img src="photo5.jpg"><img src="photo6.jpg"><img src="photo7.jpg"><img src="photo8.jpg">
+</div>
+
+<h2>From Childhood to Now 💕</h2>
+<img src="photo9.jpg" width="200" style="border-radius:20px;">
+<img src="photo10.jpg" width="200" style="border-radius:20px;">
+
+<div style="margin-top:20px;">
+<iframe id="music" width="90%" height="200"
+src="https://www.youtube.com/embed/7mW7tZ0Q8E0?enablejsapi=1"
+frameborder="0"></iframe>
+</div>
+</div>
+
+<script>
+function openSite(){
+document.getElementById("startScreen").style.display="none";
+document.getElementById("mainContent").style.display="block";
+document.getElementById("music").src+="&autoplay=1&mute=0";
+showSlides();
+}
+let slideIndex=0;
+const slides=document.querySelectorAll(".slideshow img");
+function showSlides(){
+slides.forEach(img=>img.style.display="none");
+slideIndex++;
+if(slideIndex>slides.length) slideIndex=1;
+slides[slideIndex-1].style.display="block";
+setTimeout(showSlides,2000);
+}
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
